@@ -11,7 +11,15 @@ const MultipleChoiceForm = () => {
     );
   }
 
-  const { options, submitAnswer, isAnswering } = context;
+  const { options, checkAnswer, nextQuestion } = context;
+
+  const handleAnswer = (answer: string) => {
+    const isCorrect = checkAnswer(answer);
+
+    if (isCorrect) {
+      nextQuestion();
+    }
+  };
 
   return (
     <div>
@@ -19,8 +27,7 @@ const MultipleChoiceForm = () => {
         <button
           key={option}
           type="button"
-          onClick={() => submitAnswer(option)}
-          disabled={isAnswering}
+          onClick={() => handleAnswer(option)}
         >
           {option}
         </button>
