@@ -1,8 +1,18 @@
+import ModeSelector from "../components/home/ModeSelector";
+import Leaderboard from "../components/home/Leaderboard";
+import PlayButton from "../components/home/PlayButton";
+
 const HomePage = () => {
   return (
-    <div>
-      HomePage
-    </div>
+    <main>
+      <h1>Flag Guess</h1>
+
+      <ModeSelector />
+
+      <Leaderboard />
+
+      <PlayButton />
+    </main>
   );
 };
 
