@@ -3,28 +3,28 @@ import { useNavigate } from "react-router-dom";
 
 import { GameContext } from "../../../context/GameProvider";
 
-import "./PlayButton.css";
-
-const PlayButton = () => {
-  const navigate = useNavigate();
+const PlayAgainButton = () => {
   const context = useContext(GameContext);
+  const navigate = useNavigate();
 
   if (!context) {
-    throw new Error("PlayButton must be used inside GameProvider");
+    throw new Error(
+      "PlayAgainButton must be used inside GameProvider"
+    );
   }
 
   const { startGame } = context;
 
-  const handlePlay = () => {
+  const handlePlayAgain = () => {
     startGame();
     navigate("/game");
   };
 
   return (
-    <button type="button" onClick={handlePlay}>
-      Play
+    <button type="button" onClick={handlePlayAgain}>
+      Play Again
     </button>
   );
 };
 
-export default PlayButton;
+export default PlayAgainButton;
