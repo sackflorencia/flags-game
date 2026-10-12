@@ -7,6 +7,7 @@ import Flag from "../components/game/Flag";
 import Scoreboard from "../components/game/ScoreBoard";
 import Timer from "../components/game/Timer";
 import MultipleChoiceForm from "../components/game/MultipleChoiceForm";
+import HardGuessForm from "../components/game/HardGuessForm";
 import AnswerFeedback from "../components/game/AnswerFeedback";
 
 const GamePage = () => {
@@ -17,7 +18,7 @@ const GamePage = () => {
     throw new Error("GamePage must be used inside GameProvider");
   }
 
-  const { gameStatus } = context;
+  const { gameStatus, gameMode } = context;
 
   useEffect(() => {
     if (gameStatus === "finished") {
@@ -30,7 +31,10 @@ const GamePage = () => {
       <Scoreboard />
       <Timer />
       <Flag />
-      <MultipleChoiceForm />
+
+      {gameMode === "multiple-choice" && <MultipleChoiceForm />}
+      {gameMode === "hard" && <HardGuessForm />}
+
       <AnswerFeedback />
     </main>
   );

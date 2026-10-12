@@ -1,53 +1,30 @@
 import { useContext } from "react";
 
 import { GameContext } from "../../../context/GameProvider";
-
-import LeaderboardEntry from "./LeaderboardEntry";
-
-import "./Leaderboard.css";
-
-const leaderboard = {
-  "multiple-choice": [
-    { username: "Florencia", score: 15 },
-    { username: "Sofia", score: 13 },
-    { username: "Juan", score: 11 },
-  ],
-  hard: [
-    { username: "Sofia", score: 10 },
-    { username: "Florencia", score: 9 },
-    { username: "Juan", score: 7 },
-  ],
-  capitals: [
-    { username: "Juan", score: 14 },
-    { username: "Florencia", score: 12 },
-    { username: "Sofia", score: 8 },
-  ],
-};
+import { getLeaderboardByMode } from "../../../services/leaderboardStorage";
 
 const Leaderboard = () => {
   const context = useContext(GameContext);
 
   if (!context) {
-    throw new Error("Leaderboard must be used within GameProvider");
+    throw new Error("Leaderboard must be used inside GameProvider");
   }
-
   const { gameMode } = context;
 
-  const currentLeaderboard = leaderboard[gameMode];
+  const leaderboard = getLeaderboardByMode(gameMode);
 
   return (
-    <section>
+    <div>
       <h2>Leaderboard</h2>
 
-      {currentLeaderboard.map((entry, index) => (
-        <LeaderboardEntry
-          key={entry.username}
-          position={index + 1}
-          username={entry.username}
-          score={entry.score}
-        />
+      {leaderboard.map((entry, index) => (
+        <div key={`${entry.name}-${index}`}>
+          <span>{index + 1}</span>
+          <span>{entry.name}</span>
+          <strong>{entry.score}</strong>
+        </div>
       ))}
-    </section>
+    </div>
   );
 };
 

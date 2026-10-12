@@ -9,3 +9,9 @@ export interface MultipleChoiceQuestion {
 }
 
 export type GameMode = "multiple-choice" | "hard" | "capitals";
+
+export interface LeaderboardEntry {
+  name: string;
+  score: number;
+  mode: GameMode;
+}

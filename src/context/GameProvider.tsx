@@ -8,6 +8,7 @@ import {
 import type { Country, GameMode } from "../types/game";
 import { getCountries } from "../services/countriesApi";
 import { generateMultipleChoiceQuestion } from "../modes/multipleChoice";
+import { getRandomCountry } from "../utils/gameUtils";
 
 type GameStatus = "idle" | "playing" | "finished";
 
@@ -30,6 +31,7 @@ interface GameContextType {
   nextQuestion: () => void;
   submitAnswer: (answer: string) => void;
   setGameMode: (mode: GameMode) => void;
+  skipQuestion: () => void;
 }
 
 export const GameContext = createContext<GameContextType | undefined>(
@@ -58,6 +60,14 @@ const GameProvider = ({ children }: GameProviderProps) => {
     useState<AnswerFeedback>(null);
 
   const [isAnswering, setIsAnswering] = useState(false);
+  const skipQuestion = () => {
+  if (gameStatus !== "playing" || isAnswering || !currentCountry) {
+    return;
+  }
+
+  setScore((previousScore) => Math.max(0, previousScore - 1));
+  nextQuestion();
+};
 
   // Traer países
   useEffect(() => {
@@ -92,7 +102,11 @@ const GameProvider = ({ children }: GameProviderProps) => {
       }
 
       case "hard": {
-        // TODO
+        const country = getRandomCountry(countries);
+
+        setCurrentCountry(country);
+        setOptions([]);
+
         break;
       }
 
@@ -143,7 +157,11 @@ const GameProvider = ({ children }: GameProviderProps) => {
       return;
     }
 
-    const isCorrect = answer === currentCountry.name;
+    const normalizeAnswer = (value: string) =>
+      value.trim().toLocaleLowerCase();
+
+    const isCorrect =
+      normalizeAnswer(answer) === normalizeAnswer(currentCountry.name);
 
     setIsAnswering(true);
 
@@ -185,6 +203,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
         nextQuestion,
         submitAnswer,
         setGameMode,
+        skipQuestion
       }}
     >
       {children}
