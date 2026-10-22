@@ -15,3 +15,8 @@ export interface LeaderboardEntry {
   score: number;
   mode: GameMode;
 }
+
+export interface CountryCapital {
+  name: string;
+  capital: string;
+}

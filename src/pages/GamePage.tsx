@@ -9,16 +9,18 @@ import Timer from "../components/game/Timer";
 import MultipleChoiceForm from "../components/game/MultipleChoiceForm";
 import HardGuessForm from "../components/game/HardGuessForm";
 import AnswerFeedback from "../components/game/AnswerFeedback";
+import CapitalsForm from "../components/game/CapitalsForm";
+
 
 const GamePage = () => {
   const context = useContext(GameContext);
   const navigate = useNavigate();
+  const { gameStatus, gameMode, currentCapitalCountry } = context;
 
   if (!context) {
     throw new Error("GamePage must be used inside GameProvider");
   }
 
-  const { gameStatus, gameMode } = context;
 
   useEffect(() => {
     if (gameStatus === "finished") {
@@ -30,10 +32,17 @@ const GamePage = () => {
     <main>
       <Scoreboard />
       <Timer />
-      <Flag />
+      {gameMode === "capitals" ? (
+        <h2>
+          ¿Cuál es la capital de {currentCapitalCountry?.name}?
+        </h2>
+      ) : (
+        <Flag />
+      )}
 
       {gameMode === "multiple-choice" && <MultipleChoiceForm />}
       {gameMode === "hard" && <HardGuessForm />}
+      {gameMode === "capitals" && <MultipleChoiceForm />}
 
       <AnswerFeedback />
     </main>

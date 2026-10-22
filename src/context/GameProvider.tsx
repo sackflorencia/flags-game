@@ -9,6 +9,9 @@ import type { Country, GameMode } from "../types/game";
 import { getCountries } from "../services/countriesApi";
 import { generateMultipleChoiceQuestion } from "../modes/multipleChoice";
 import { getRandomCountry } from "../utils/gameUtils";
+import type { CountryCapital } from "../types/game";
+import { getCountriesWithCapitals } from "../services/capitalsApi";
+import { generateCapitalsQuestion } from "../modes/capitals";
 
 type GameStatus = "idle" | "playing" | "finished";
 
@@ -26,6 +29,9 @@ interface GameContextType {
   gameStatus: GameStatus;
   feedback: AnswerFeedback;
   isAnswering: boolean;
+
+  countriesWithCapitals: CountryCapital[];
+  currentCapitalCountry: CountryCapital | null;
 
   startGame: () => void;
   nextQuestion: () => void;
@@ -52,6 +58,11 @@ const GameProvider = ({ children }: GameProviderProps) => {
   const [gameMode, setGameMode] = useState<GameMode>("multiple-choice");
 
   const [timeLeft, setTimeLeft] = useState(60);
+  const [countriesWithCapitals, setCountriesWithCapitals] =
+    useState<CountryCapital[]>([]);
+
+  const [currentCapitalCountry, setCurrentCapitalCountry] =
+    useState<CountryCapital | null>(null);
 
   const [gameStatus, setGameStatus] =
     useState<GameStatus>("idle");
@@ -61,13 +72,13 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
   const [isAnswering, setIsAnswering] = useState(false);
   const skipQuestion = () => {
-  if (gameStatus !== "playing" || isAnswering || !currentCountry) {
-    return;
-  }
+    if (gameStatus !== "playing" || isAnswering || !currentCountry) {
+      return;
+    }
 
-  setScore((previousScore) => Math.max(0, previousScore - 1));
-  nextQuestion();
-};
+    setScore((previousScore) => Math.max(0, previousScore - 1));
+    nextQuestion();
+  };
 
   // Traer países
   useEffect(() => {
@@ -85,6 +96,18 @@ const GameProvider = ({ children }: GameProviderProps) => {
     loadCountries();
   }, []);
 
+  useEffect(() => {
+    const loadCapitals = async () => {
+      try {
+        const countries = await getCountriesWithCapitals();
+        setCountriesWithCapitals(countries);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadCapitals();
+  }, []);
   // Generar una nueva pregunta
   const nextQuestion = () => {
     if (countries.length === 0) {
@@ -98,6 +121,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
         setCurrentCountry(question.country);
         setOptions(question.options);
 
+        setCurrentCapitalCountry(null);
         break;
       }
 
@@ -106,12 +130,19 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
         setCurrentCountry(country);
         setOptions([]);
+        setCurrentCapitalCountry(null);
 
         break;
       }
 
       case "capitals": {
-        // TODO
+        if (countriesWithCapitals.length < 4) return;
+
+        const question = generateCapitalsQuestion(countriesWithCapitals);
+
+        setCurrentCapitalCountry(question.country);
+        setOptions(question.options);
+
         break;
       }
     }
@@ -160,8 +191,15 @@ const GameProvider = ({ children }: GameProviderProps) => {
     const normalizeAnswer = (value: string) =>
       value.trim().toLocaleLowerCase();
 
+    const correctAnswer =
+      gameMode === "capitals"
+        ? currentCapitalCountry?.capital
+        : currentCountry?.name;
+
+    if (!correctAnswer) return;
+
     const isCorrect =
-      normalizeAnswer(answer) === normalizeAnswer(currentCountry.name);
+      normalizeAnswer(answer) === normalizeAnswer(correctAnswer);
 
     setIsAnswering(true);
 
@@ -198,6 +236,9 @@ const GameProvider = ({ children }: GameProviderProps) => {
         gameStatus,
         feedback,
         isAnswering,
+
+        countriesWithCapitals,
+        currentCapitalCountry,
 
         startGame,
         nextQuestion,
