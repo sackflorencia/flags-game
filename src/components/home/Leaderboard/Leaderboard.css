@@ -1,0 +1,42 @@
+.leaderboard-container {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  margin: 0 auto;
+}
+
+.leaderboard-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #212529;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  font-size: 0.96rem;
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GameContext } from "../../../context/GameProvider";
 
-
+import "./Flag.css";
 
 const Flag = () => {
   const context = useContext(GameContext);
@@ -13,12 +13,13 @@ const Flag = () => {
   const { currentCountry, loading } = context;
 
   if (loading || !currentCountry) {
-    return <p>Loading flag...</p>;
+    return <p>Cargando bandera...</p>;
   }
 
   return (
-    <div>
+    <div className="flag-container">
       <img
+        className="flag-image"
         src={currentCountry.flag}
         alt="Flag to guess"
       />

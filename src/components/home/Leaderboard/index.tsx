@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { GameContext } from "../../../context/GameProvider";
 import { getLeaderboardByMode } from "../../../services/leaderboardStorage";
 
+import "./Leaderboard.css";
+
 const Leaderboard = () => {
   const context = useContext(GameContext);
 
@@ -14,16 +16,23 @@ const Leaderboard = () => {
   const leaderboard = getLeaderboardByMode(gameMode);
 
   return (
-    <div>
-      <h2>Leaderboard</h2>
+    <div className="leaderboard-container">
+      <h2 className="leaderboard-title">Leaderboard</h2>
 
-      {leaderboard.map((entry, index) => (
-        <div key={`${entry.name}-${index}`}>
-          <span>{index + 1}</span>
-          <span>{entry.name}</span>
-          <strong>{entry.score}</strong>
-        </div>
-      ))}
+      {leaderboard.length === 0 ? (
+        <p>No hay puntajes todavía.</p>
+      ) : (
+        <ul className="leaderboard-list">
+          {leaderboard.map((entry, index) => (
+            <li key={`${entry.name}-${index}`} className="leaderboard-item">
+              <span>
+                #{index + 1} {entry.name}
+              </span>
+              <strong>{entry.score}</strong>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

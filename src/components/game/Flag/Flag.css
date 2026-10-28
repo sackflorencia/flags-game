@@ -1,0 +1,18 @@
+.flag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px auto 18px;
+  width: 100%;
+}
+
+.flag-image {
+  width: min(100%, 360px);
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fff;
+}

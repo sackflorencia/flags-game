@@ -1,12 +1,14 @@
+import "./ResultScore.css";
+
 interface ResultScoreProps {
   score: number;
 }
 
 const ResultScore = ({ score }: ResultScoreProps) => {
   return (
-    <div>
-      <p>Your score</p>
-      <strong>{score}</strong>
+    <div className="result-score">
+      <h2>Your score</h2>
+      <p>{score}</p>
     </div>
   );
 };

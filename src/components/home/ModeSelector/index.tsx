@@ -16,7 +16,7 @@ const ModeSelector = () => {
   const { gameMode, setGameMode } = context;
 
   return (
-    <div>
+    <div className="mode-selector">
       <ModeButton
         mode="multiple-choice"
         title="Multiple Choice"

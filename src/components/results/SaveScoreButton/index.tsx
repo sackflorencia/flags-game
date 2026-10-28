@@ -1,3 +1,5 @@
+import "./SaveScoreButton.css";
+
 interface SaveScoreButtonProps {
   onSave: () => void;
   disabled: boolean;
@@ -12,6 +14,7 @@ const SaveScoreButton = ({
       type="button"
       onClick={onSave}
       disabled={disabled}
+      className="save-score-btn"
     >
       Save to Leaderboard
     </button>

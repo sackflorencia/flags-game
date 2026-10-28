@@ -1,0 +1,29 @@
+.timer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #343a40;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 10px 16px;
+  border-radius: 999px;
+  width: fit-content;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.timer-container.warning {
+  color: #b91c1c;
+  background: #fff5f5;
+  border-color: rgba(239, 68, 68, 0.25);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}

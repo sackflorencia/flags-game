@@ -1,0 +1,8 @@
+.mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  margin: 18px auto 8px;
+}

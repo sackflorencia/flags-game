@@ -1,0 +1,38 @@
+.multiple-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.choice-button {
+  min-height: 76px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  color: #1f2937;
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice-button:hover {
+  background-color: #e2e6ea;
+  border-color: #a5b4fc;
+}
+
+.choice-button.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.choice-button.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}

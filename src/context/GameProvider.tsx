@@ -120,7 +120,6 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
         setCurrentCountry(question.country);
         setOptions(question.options);
-
         setCurrentCapitalCountry(null);
         break;
       }
@@ -131,7 +130,6 @@ const GameProvider = ({ children }: GameProviderProps) => {
         setCurrentCountry(country);
         setOptions([]);
         setCurrentCapitalCountry(null);
-
         break;
       }
 
@@ -140,9 +138,9 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
         const question = generateCapitalsQuestion(countriesWithCapitals);
 
+        setCurrentCountry(null);
         setCurrentCapitalCountry(question.country);
         setOptions(question.options);
-
         break;
       }
     }
@@ -180,23 +178,24 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
   // Responder pregunta
   const submitAnswer = (answer: string) => {
-    if (
-      !currentCountry ||
-      gameStatus !== "playing" ||
-      isAnswering
-    ) {
+    if (gameStatus !== "playing" || isAnswering) {
       return;
     }
 
     const normalizeAnswer = (value: string) =>
       value.trim().toLocaleLowerCase();
 
-    const correctAnswer =
-      gameMode === "capitals"
-        ? currentCapitalCountry?.capital
-        : currentCountry?.name;
+    let correctAnswer: string | null = null;
 
-    if (!correctAnswer) return;
+    if (gameMode === "capitals") {
+      correctAnswer = currentCapitalCountry?.capital ?? null;
+    } else {
+      correctAnswer = currentCountry?.name ?? null;
+    }
+
+    if (!correctAnswer) {
+      return;
+    }
 
     const isCorrect =
       normalizeAnswer(answer) === normalizeAnswer(correctAnswer);
@@ -210,12 +209,10 @@ const GameProvider = ({ children }: GameProviderProps) => {
       setFeedback("incorrect");
     }
 
-    // Mostrar feedback durante 500ms
     setTimeout(() => {
       setFeedback(null);
       setIsAnswering(false);
 
-      // Solo avanzar si la respuesta fue correcta
       if (isCorrect) {
         nextQuestion();
       }

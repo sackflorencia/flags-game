@@ -1,0 +1,16 @@
+.play-again-btn {
+  padding: 12px 20px;
+  min-width: 160px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-again-btn:hover {
+  background-color: #218838;
+}

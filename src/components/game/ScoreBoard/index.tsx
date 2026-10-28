@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GameContext } from "../../../context/GameProvider";
 
+import "./ScoreBoard.css";
 
 const Scoreboard = () => {
   const context = useContext(GameContext);
@@ -12,9 +13,11 @@ const Scoreboard = () => {
   const { score } = context;
 
   return (
-    <div>
-      <span>Score</span>
-      <strong>{score}</strong>
+    <div className="score-board">
+      <div className="score-item">
+        <span>Score</span>
+        <strong>{score}</strong>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { useContext } from "react";
 
 import { GameContext } from "../../../context/GameProvider";
 
+import "./MultipleChoiceForm.css";
+
 const MultipleChoiceForm = () => {
   const context = useContext(GameContext);
 
@@ -14,13 +16,14 @@ const MultipleChoiceForm = () => {
   const { options, submitAnswer, isAnswering } = context;
 
   return (
-    <div>
+    <div className="multiple-choice-grid">
       {options.map((option) => (
         <button
           key={option}
           type="button"
           onClick={() => submitAnswer(option)}
           disabled={isAnswering}
+          className="choice-button"
         >
           {option}
         </button>

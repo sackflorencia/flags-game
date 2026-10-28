@@ -1,0 +1,26 @@
+.player-name-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+  margin: 8px auto 18px;
+}
+
+.player-name-input label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.player-name-input input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 2px solid #ced4da;
+  border-radius: 10px;
+  outline: none;
+}
+
+.player-name-input input:focus {
+  border-color: #007bff;
+}

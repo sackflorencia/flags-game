@@ -1,0 +1,16 @@
+.save-score-btn {
+  padding: 12px 20px;
+  min-width: 200px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-score-btn:hover {
+  background-color: #e0a800;
+}

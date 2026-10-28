@@ -1,3 +1,5 @@
+import "./PlayerNameInput.css";
+
 interface PlayerNameInputProps {
   name: string;
   onChange: (name: string) => void;
@@ -8,7 +10,7 @@ const PlayerNameInput = ({
   onChange,
 }: PlayerNameInputProps) => {
   return (
-    <div>
+    <div className="player-name-input">
       <label htmlFor="player-name">
         Name
       </label>

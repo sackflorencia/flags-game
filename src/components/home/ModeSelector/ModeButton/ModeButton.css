@@ -1,0 +1,40 @@
+.mode-button {
+  width: 100%;
+  min-height: 110px;
+  padding: 18px 20px;
+  text-align: left;
+  background-color: #ffffff;
+  color: #343a40;
+  border: 2px solid #e9ecef;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.mode-button:hover {
+  background-color: #f8f9fa;
+  border-color: #7aa8ff;
+  color: #1d4ed8;
+}
+
+.mode-button h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.mode-button p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: inherit;
+  opacity: 0.9;
+}
+
+.mode-button.active {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  color: #0f172a;
+  border-color: #60a5fa;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+}

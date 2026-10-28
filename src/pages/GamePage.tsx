@@ -9,17 +9,17 @@ import Timer from "../components/game/Timer";
 import MultipleChoiceForm from "../components/game/MultipleChoiceForm";
 import HardGuessForm from "../components/game/HardGuessForm";
 import AnswerFeedback from "../components/game/AnswerFeedback";
-import CapitalsForm from "../components/game/CapitalsForm";
 
 
 const GamePage = () => {
   const context = useContext(GameContext);
   const navigate = useNavigate();
-  const { gameStatus, gameMode, currentCapitalCountry } = context;
 
   if (!context) {
     throw new Error("GamePage must be used inside GameProvider");
   }
+
+  const { gameStatus, gameMode, currentCapitalCountry } = context;
 
 
   useEffect(() => {

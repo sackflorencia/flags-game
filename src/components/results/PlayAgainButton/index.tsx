@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { GameContext } from "../../../context/GameProvider";
 
+import "./PlayAgainButton.css";
+
 const PlayAgainButton = () => {
   const context = useContext(GameContext);
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ const PlayAgainButton = () => {
   };
 
   return (
-    <button type="button" onClick={handlePlayAgain}>
+    <button type="button" onClick={handlePlayAgain} className="play-again-btn">
       Play Again
     </button>
   );

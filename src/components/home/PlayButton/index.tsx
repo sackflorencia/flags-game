@@ -21,7 +21,7 @@ const PlayButton = () => {
   };
 
   return (
-    <button type="button" onClick={handlePlay}>
+    <button type="button" onClick={handlePlay} className="play-button">
       Play
     </button>
   );

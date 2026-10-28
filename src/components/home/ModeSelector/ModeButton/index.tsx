@@ -19,7 +19,7 @@ const ModeButton = ({
   return (
     <button
       type="button"
-      className={selected ? "mode-button selected" : "mode-button"}
+      className={selected ? "mode-button active" : "mode-button"}
       onClick={onClick}
     >
       <h3>{title}</h3>

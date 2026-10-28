@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import "./BackToMenuButton.css";
+
 const BackToMenuButton = () => {
   const navigate = useNavigate();
 
@@ -8,7 +10,11 @@ const BackToMenuButton = () => {
   };
 
   return (
-    <button type="button" onClick={handleBackToMenu}>
+    <button
+      type="button"
+      onClick={handleBackToMenu}
+      className="back-to-menu-btn"
+    >
       Back to Menu
     </button>
   );
