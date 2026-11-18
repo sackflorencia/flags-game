@@ -1,40 +1,110 @@
 :root {
-  font-family: Inter, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  /* Anthropic Brand Identity Guidelines (from SKILLS.md) */
+  /* Main Colors */
+  --color-dark: #141413;
+  --color-light: #faf9f5;
+  --color-mid-gray: #b0aea5;
+  --color-light-gray: #e8e6dc;
+
+  /* Accent Colors */
+  --color-accent-orange: #d97757;
+  --color-accent-orange-hover: #c46445;
+  --color-accent-orange-soft: rgba(217, 119, 87, 0.1);
+
+  --color-accent-blue: #6a9bcc;
+  --color-accent-blue-hover: #5485b5;
+  --color-accent-blue-soft: rgba(106, 155, 204, 0.1);
+
+  --color-accent-green: #788c5d;
+  --color-accent-green-hover: #63754b;
+  --color-accent-green-soft: rgba(120, 140, 93, 0.1);
+
+  /* Functional Tokens */
+  --bg-page: #faf9f5;
+  --bg-card: #ffffff;
+  --bg-subtle: #f5f4ee;
+  --bg-input: #ffffff;
+
+  --text-primary: #141413;
+  --text-secondary: #57564f;
+  --text-muted: #807e75;
+
+  --border-light: #e8e6dc;
+  --border-strong: #b0aea5;
+  --border-focus: #141413;
+
+  /* Typography */
+  --font-heading: 'Poppins', Arial, sans-serif;
+  --font-body: 'Lora', Georgia, serif;
+
+  /* Grounded, natural shadows - no fake neon glows */
+  --shadow-sm: 0 1px 3px rgba(20, 20, 19, 0.05);
+  --shadow-md: 0 4px 12px rgba(20, 20, 19, 0.06);
+  --shadow-lg: 0 12px 28px rgba(20, 20, 19, 0.08);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Sizing */
+  font-family: var(--font-body);
+  line-height: 1.6;
   font-weight: 400;
-  color: #1f2937;
-  background: #f3f6fb;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 html, body, #root {
   margin: 0;
-  min-height: 100%;
+  padding: 0;
   min-height: 100vh;
 }
 
 body {
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-dark);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
   margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #eef4ff 0%, #f7f7ff 45%, #f2faf5 100%);
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent-blue);
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-button, input {
-  font: inherit;
+a:hover {
+  color: var(--color-accent-blue-hover);
 }
 
-h1, h2, h3, p {
-  margin: 0;
+:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 2px;
 }

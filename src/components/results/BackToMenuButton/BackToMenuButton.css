@@ -1,16 +1,22 @@
 .back-to-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
   padding: 12px 20px;
-  min-width: 160px;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--color-dark);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .back-to-menu-btn:hover {
-  background-color: #5a6268;
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
 }

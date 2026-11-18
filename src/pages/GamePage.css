@@ -1,0 +1,171 @@
+/* Game Page Layout */
+.game-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(100%, 780px);
+  margin: 0 auto;
+}
+
+/* Top HUD */
+.game-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.game-exit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.game-exit-btn:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+  color: var(--color-dark);
+}
+
+.game-hud-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Clean Mode Indicator - No goofy oval pills */
+.game-mode-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+}
+
+.mode-theme--multiple-choice {
+  color: var(--color-accent-blue);
+  border-color: rgba(106, 155, 204, 0.3);
+  background: var(--color-accent-blue-soft);
+}
+
+.mode-theme--hard {
+  color: var(--color-accent-orange);
+  border-color: rgba(217, 119, 87, 0.3);
+  background: var(--color-accent-orange-soft);
+}
+
+.mode-theme--capitals {
+  color: var(--color-accent-green);
+  border-color: rgba(120, 140, 93, 0.3);
+  background: var(--color-accent-green-soft);
+}
+
+/* Question Header */
+.game-question-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.game-question-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: -0.01em;
+}
+
+.game-question-sub {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* Capital Challenge Card */
+.capital-challenge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin: 0 auto;
+  width: min(100%, 540px);
+}
+
+.capital-challenge-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-green);
+}
+
+.capital-question {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3.2vw, 1.7rem);
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.35;
+}
+
+.capital-country-name {
+  color: var(--color-accent-green);
+  display: block;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .game-top-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .game-exit-btn {
+    order: 1;
+  }
+
+  .game-mode-indicator {
+    order: 2;
+  }
+
+  .game-hud-group {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 4px;
+  }
+
+  .capital-challenge-card {
+    padding: 24px 16px;
+  }
+}

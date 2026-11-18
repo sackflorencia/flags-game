@@ -1,40 +1,167 @@
-.mode-button {
+.mode-card {
   width: 100%;
-  min-height: 110px;
-  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: left;
-  background-color: #ffffff;
-  color: #343a40;
-  border: 2px solid #e9ecef;
-  border-radius: 14px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  position: relative;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+  min-height: 190px;
 }
 
-.mode-button:hover {
-  background-color: #f8f9fa;
-  border-color: #7aa8ff;
-  color: #1d4ed8;
+.mode-card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
-.mode-button h3 {
-  margin: 0 0 8px;
-  font-size: 1.2rem;
-  line-height: 1.2;
+.mode-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 14px;
 }
 
-.mode-button p {
+.mode-card__icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-subtle);
+  color: var(--color-dark);
+  border: 1px solid var(--border-light);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.mode-card__radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.mode-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.mode-card__category {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.mode-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-dark);
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: inherit;
-  opacity: 0.9;
+  letter-spacing: -0.01em;
 }
 
-.mode-button.active {
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  color: #0f172a;
-  border-color: #60a5fa;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+.mode-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.mode-card__footer {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light);
+  width: 100%;
+}
+
+.mode-card__feature {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Selected States with Brand Colors from SKILLS.md - Solid & Crisp, No Glow */
+/* Multiple Choice -> Blue Accent (#6a9bcc) */
+.mode-card--multiple-choice.is-selected {
+  border-color: var(--color-accent-blue);
+  background: #ffffff;
+}
+
+.mode-card--multiple-choice.is-selected .mode-card__icon-box {
+  background: var(--color-accent-blue);
+  color: #ffffff;
+  border-color: var(--color-accent-blue);
+}
+
+.mode-card--multiple-choice.is-selected .mode-card__radio {
+  border-color: var(--color-accent-blue);
+  background: var(--color-accent-blue);
+  color: #ffffff;
+}
+
+.mode-card--multiple-choice.is-selected .mode-card__category {
+  color: var(--color-accent-blue);
+}
+
+/* Hard Mode -> Primary Orange Accent (#d97757) */
+.mode-card--hard.is-selected {
+  border-color: var(--color-accent-orange);
+  background: #ffffff;
+}
+
+.mode-card--hard.is-selected .mode-card__icon-box {
+  background: var(--color-accent-orange);
+  color: #ffffff;
+  border-color: var(--color-accent-orange);
+}
+
+.mode-card--hard.is-selected .mode-card__radio {
+  border-color: var(--color-accent-orange);
+  background: var(--color-accent-orange);
+  color: #ffffff;
+}
+
+.mode-card--hard.is-selected .mode-card__category {
+  color: var(--color-accent-orange);
+}
+
+/* Capitals Mode -> Tertiary Green Accent (#788c5d) */
+.mode-card--capitals.is-selected {
+  border-color: var(--color-accent-green);
+  background: #ffffff;
+}
+
+.mode-card--capitals.is-selected .mode-card__icon-box {
+  background: var(--color-accent-green);
+  color: #ffffff;
+  border-color: var(--color-accent-green);
+}
+
+.mode-card--capitals.is-selected .mode-card__radio {
+  border-color: var(--color-accent-green);
+  background: var(--color-accent-green);
+  color: #ffffff;
+}
+
+.mode-card--capitals.is-selected .mode-card__category {
+  color: var(--color-accent-green);
 }

@@ -1,16 +1,22 @@
 .play-again-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
   padding: 12px 20px;
-  min-width: 160px;
-  font-size: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
   font-weight: 600;
-  background-color: #28a745;
-  color: white;
+  background: var(--color-accent-orange);
+  color: #ffffff;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.15s ease;
 }
 
 .play-again-btn:hover {
-  background-color: #218838;
+  background: var(--color-accent-orange-hover);
 }

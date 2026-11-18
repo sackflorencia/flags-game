@@ -1,24 +1,36 @@
-.score-board {
-  display: flex;
-  justify-content: space-between;
+.game-stat {
+  display: inline-flex;
   align-items: center;
-  width: 100%;
-  max-width: 540px;
-  padding: 14px 18px;
-  background-color: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #495057;
-  margin: 0 auto 6px;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
 }
 
-.score-board .score-item {
+.game-stat__icon {
+  color: var(--color-dark);
+}
+
+.game-stat__details {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.game-stat__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.game-stat__value {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-dark);
 }

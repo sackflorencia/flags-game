@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Play } from "lucide-react";
 
 import { GameContext } from "../../../context/GameProvider";
-
 import "./PlayButton.css";
 
 const PlayButton = () => {
@@ -13,7 +13,7 @@ const PlayButton = () => {
     throw new Error("PlayButton must be used inside GameProvider");
   }
 
-  const { startGame } = context;
+  const { startGame, gameMode } = context;
 
   const handlePlay = () => {
     startGame();
@@ -21,8 +21,14 @@ const PlayButton = () => {
   };
 
   return (
-    <button type="button" onClick={handlePlay} className="play-button">
-      Play
+    <button
+      type="button"
+      onClick={handlePlay}
+      className={`play-button play-button--${gameMode}`}
+      aria-label="Comenzar partida"
+    >
+      <Play size={18} fill="currentColor" strokeWidth={1} />
+      <span>Comenzar Partida</span>
     </button>
   );
 };

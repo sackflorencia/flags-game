@@ -1,38 +1,104 @@
 .multiple-choice-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(180px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   width: 100%;
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
 .choice-button {
-  min-height: 76px;
-  padding: 14px 18px;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #f8f9fa;
-  color: #1f2937;
-  border: 2px solid #dee2e6;
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 12px 16px;
+  text-align: left;
+  background: var(--bg-card);
+  color: var(--color-dark);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
+  position: relative;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
-.choice-button:hover {
-  background-color: #e2e6ea;
-  border-color: #a5b4fc;
+.choice-button:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
-.choice-button.correct {
-  background-color: #d4edda;
-  border-color: #28a745;
-  color: #155724;
+.choice-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.choice-button.incorrect {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-  color: #721c24;
+.choice-button:hover:not(:disabled) .choice-badge {
+  border-color: var(--border-strong);
+  color: var(--color-dark);
+}
+
+.choice-label {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* Feedback states during answering - Crisp solid borders without neon glow */
+.choice-button.choice-selected {
+  border-color: var(--color-dark);
+}
+
+.choice-button.choice-correct {
+  border-color: var(--color-accent-green);
+  background: var(--color-accent-green-soft);
+}
+
+.choice-button.choice-correct .choice-badge {
+  background: var(--color-accent-green);
+  border-color: var(--color-accent-green);
+  color: #ffffff;
+}
+
+.choice-button.choice-incorrect {
+  border-color: var(--color-accent-orange);
+  background: var(--color-accent-orange-soft);
+}
+
+.choice-button.choice-incorrect .choice-badge {
+  background: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .multiple-choice-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .choice-button {
+    min-height: 52px;
+    padding: 10px 14px;
+  }
+
+  .choice-label {
+    font-size: 0.92rem;
+  }
 }

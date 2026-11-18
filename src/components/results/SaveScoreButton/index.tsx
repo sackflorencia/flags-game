@@ -1,3 +1,4 @@
+import { Bookmark } from "lucide-react";
 import "./SaveScoreButton.css";
 
 interface SaveScoreButtonProps {
@@ -5,10 +6,7 @@ interface SaveScoreButtonProps {
   disabled: boolean;
 }
 
-const SaveScoreButton = ({
-  onSave,
-  disabled,
-}: SaveScoreButtonProps) => {
+const SaveScoreButton = ({ onSave, disabled }: SaveScoreButtonProps) => {
   return (
     <button
       type="button"
@@ -16,7 +14,8 @@ const SaveScoreButton = ({
       disabled={disabled}
       className="save-score-btn"
     >
-      Save to Leaderboard
+      <Bookmark size={16} strokeWidth={2} />
+      <span>Guardar en la Tabla</span>
     </button>
   );
 };

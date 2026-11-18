@@ -1,29 +1,40 @@
+.answer-feedback-spacer {
+  height: 42px;
+  width: 100%;
+}
+
 .answer-feedback {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   width: min(100%, 420px);
-  margin: 8px auto 0;
-  padding: 12px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1rem;
-  animation: fadeIn 0.25s ease-in-out;
+  min-height: 42px;
+  margin: 4px auto 0;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.answer-feedback.correct {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+.feedback-correct {
+  background: var(--color-accent-green-soft);
+  color: var(--color-accent-green);
+  border: 1.5px solid var(--color-accent-green);
 }
 
-.answer-feedback.incorrect {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+.feedback-incorrect {
+  background: var(--color-accent-orange-soft);
+  color: var(--color-accent-orange);
+  border: 1.5px solid var(--color-accent-orange);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+.feedback-icon {
+  flex-shrink: 0;
+}
+
+.feedback-text {
+  letter-spacing: -0.01em;
 }

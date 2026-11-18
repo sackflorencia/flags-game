@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import { Home } from "lucide-react";
 import "./BackToMenuButton.css";
 
 const BackToMenuButton = () => {
@@ -14,8 +14,10 @@ const BackToMenuButton = () => {
       type="button"
       onClick={handleBackToMenu}
       className="back-to-menu-btn"
+      aria-label="Volver a la pantalla principal"
     >
-      Back to Menu
+      <Home size={16} strokeWidth={2} />
+      <span>Volver al Menú</span>
     </button>
   );
 };

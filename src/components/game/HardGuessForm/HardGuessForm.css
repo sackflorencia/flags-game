@@ -1,37 +1,99 @@
 .hard-guess-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
-  max-width: 520px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.hard-guess-form input {
+.hard-guess-input {
   width: 100%;
-  padding: 14px 16px;
-  font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  background: #ffffff;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-dark);
+  transition: border-color 0.15s ease;
+}
+
+.hard-guess-input:focus {
   outline: none;
+  border-color: var(--color-dark);
 }
 
-.hard-guess-form input:focus {
-  border-color: #dc3545;
+.hard-buttons-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 10px;
+  width: 100%;
 }
 
-.hard-guess-form button {
-  padding: 14px 16px;
+.hard-btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 600;
-  background-color: #dc3545;
-  color: white;
+  background: var(--color-accent-orange);
+  color: #ffffff;
   border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.15s ease;
 }
 
-.hard-guess-form button:hover {
-  background-color: #bd2130;
+.hard-btn-submit:hover:not(:disabled) {
+  background: var(--color-accent-orange-hover);
+}
+
+.hard-btn-skip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.hard-btn-skip:hover:not(:disabled) {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+  color: var(--color-dark);
+}
+
+.skip-penalty {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.hard-helper-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.hard-helper-text strong {
+  font-family: var(--font-heading);
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 500px) {
+  .hard-buttons-row {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,16 +1,28 @@
 .save-score-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
   padding: 12px 20px;
-  min-width: 200px;
-  font-size: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
   font-weight: 600;
-  background-color: #ffc107;
-  color: #212529;
+  background: var(--color-accent-green);
+  color: #ffffff;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.15s ease;
 }
 
-.save-score-btn:hover {
-  background-color: #e0a800;
+.save-score-btn:hover:not(:disabled) {
+  background: var(--color-accent-green-hover);
+}
+
+.save-score-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
 }
